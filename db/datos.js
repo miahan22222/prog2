@@ -9,7 +9,7 @@ const datos={
     },
     productos: [
         {
-            imagen: "",
+            imagen: "/images/products/auto1.png",
             nombreProducto: "volkswagen scirocco",
             descripcion: "volkswagen scirocco, anio 2016, color black",
             comentarios: [{
@@ -33,7 +33,7 @@ const datos={
         ]
         },
         {
-            imagen: "",
+            imagen: "/images/products/auto2.png",
             nombreProducto: "volkswagen golf",
             descripcion: "volkswagen golf, anio 2015, color white",
             comentarios: [{
@@ -58,7 +58,7 @@ const datos={
         ]
         },
         {
-            imagen: "",
+            imagen: "/images/products/auto3.png",
             nombreProducto: "volkswagen vento",
             descripcion: "volkswagen vento, anio 2012, color red",
             comentarios: [{
