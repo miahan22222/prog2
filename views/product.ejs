@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +15,10 @@
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="/css/app.css">
 </head>
+
 <body>
 	<!-- Header -->
-	
+
 	<!-- /Header -->
 	<header class="main-header">
 		<div class="container">
@@ -26,7 +28,7 @@
 						<img src="/images/logo-mercado-liebre.svg">
 					</a>
 				</div>
-	
+
 				<div class="col-7 col-md-6">
 					<form action="search-results.html" method="GET" class="search-form">
 						<input type="text" name="search" placeholder="Buscar productos, marcas y más"
@@ -34,7 +36,7 @@
 						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
 					</form>
 				</div>
-	
+
 				<div class="col-12 col-md-4">
 					<a class="main-header_credit-link">
 						<i class="fas fa-hand-holding-usd"></i>
@@ -42,17 +44,17 @@
 					</a>
 				</div>
 			</div>
-	
+
 			<button class="btn-toggle-navbar">
 				<i class="fas fa-bars"></i>
 			</button>
-	
+
 			<nav class="main-navbar">
 				<ul class="left-navbar">
 					<li><a href="index.html">Todos los productos</a></li>
 					<!-- solo logueado <li><a href="">Cargar productos</a></li> -->
 				</ul>
-	
+
 				<ul class="right-navbar">
 					<!-- Solo logueado <li><a href="profile.html">
 								Nombre del usuario <i class="fas fa-user"></i>
@@ -79,7 +81,9 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%= productos[0].nombreProducto %></h2> 
+			<h2 class="products-title">
+				<%= productos[0].nombreProducto %>
+			</h2>
 			<p class="product-detail-description">
 				<a href="/product/Add/">Editar</a>
 			</p>
@@ -88,45 +92,58 @@
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
 					<img src="/images/products/auto1.png" alt="" class="product-detail-img">
-					<p class="product-detail-description"><%= productos[0].descripcion %>
-						</p>
+					<p class="product-detail-description">
+						<%= productos[0].descripcion %>
+					</p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
 						<article>
-							
-						
+
+
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="profile.html"><%= productos[0].comentarios[0].nombreUsuario %> </a> </strong>
-								
-							
-								<p><%= productos[0].comentarios[0].texto %></p>
-							</div>
-							</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-									<p class="user">
-									<strong> <a href="profile.html"><%= productos[0].comentarios[0].nombreUsuario %> </a> </strong>
-									
-								
-									<p><%= productos[0].comentarios[1].texto %></p>
-								</div>
-							</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-										<p class="user">
-										<strong> <a href="profile.html"><%= productos[0].comentarios[0].nombreUsuario %> </a> </strong>
-										
-									
-										<p><%= productos[0].comentarios[2].texto %></p>
-							
+									<strong> <a href="profile.html">
+											<%= productos[0].comentarios[0].nombreUsuario %>
+										</a> </strong>
+
+
+								<p>
+									<%= productos[0].comentarios[0].texto %>
+								</p>
 							</div>
 						</article>
-			
+						<article>
+							<img src="https://via.placeholder.com/35" alt="">
+							<div class="data">
+								<p class="user">
+									<strong> <a href="profile.html">
+											<%= productos[0].comentarios[0].nombreUsuario %>
+										</a> </strong>
+
+
+								<p>
+									<%= productos[0].comentarios[1].texto %>
+								</p>
+							</div>
+						</article>
+						<article>
+							<img src="https://via.placeholder.com/35" alt="">
+							<div class="data">
+								<p class="user">
+									<strong> <a href="profile.html">
+											<%= productos[0].comentarios[0].nombreUsuario %>
+										</a> </strong>
+
+
+								<p>
+									<%= productos[0].comentarios[2].texto %>
+								</p>
+
+							</div>
+						</article>
+
 
 					</section>
 					<form class="form" action="" method="POST">
@@ -149,7 +166,8 @@
 					<article class="footer-data">
 						<i class="fas fa-credit-card"></i>
 						<h2>Pagá con tarjeta o en efectivo</h2>
-						<p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago. ¡Y
+						<p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago.
+							¡Y
 							siempre es seguro!</p>
 					</article>
 				</div>
@@ -174,5 +192,6 @@
 	</footer>
 	<!-- /footer -->
 
-</body>	
+</body>
+
 </html>
