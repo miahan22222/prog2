@@ -1,4 +1,4 @@
-const express= require('express');
+/*const express= require('express');
 const router= express.Router();
 
 const registerController= require('../controllers/registerController');
@@ -8,3 +8,4 @@ router.get("/verify", registerController.VerificacionForm)
 module.exports= router;
 
 
+*/
