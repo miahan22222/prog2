@@ -19,7 +19,7 @@ const datos={
             },
             {
                 nombreUsuario: "Lucas",
-                texto: "Esta super!",
+                texto: "Esta buenisimooo!",
                 fotoPerfil: "/images/users/fotoUsuario1.jpg"
 
             },
