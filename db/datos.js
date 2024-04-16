@@ -83,7 +83,7 @@ const datos={
         ]
         },
         {
-            imagen: "",
+            imagen: "/images/products/rayomcqueen.png",
             nombreProducto: "Volkswagen Nivus",
             descripcion: "volkswagen Nivus, anio 2020, color white",
             comentarios: [{
