@@ -10,6 +10,10 @@ const usersController= require('../controllers/usersController');
 router.get("/register", usersController.vistaDeRegister)
 router.get("/register/verify", usersController.verificacionForm);
 router.get("/login",usersController.vistaDeLogin)
+router.get("/login/verify", usersController.verificacionLogin);
+router.get("/profile", usersController.vistadeProfile);
+router.get("/profile-edit", usersController.vistadeEditProfile);
+
 
 
 module.exports = router; 
