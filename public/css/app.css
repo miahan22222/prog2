@@ -3,7 +3,7 @@
 
 
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 
 /*====== Variables ======*/
@@ -14,7 +14,7 @@
   --gray: #666666;
   --rojo-autos: #9d0a17;
   --green: #39b54a;
-  --base-font-family: 'Roboto', sans-serif
+  --base-font-family: 'Oswald', sans-serif
 }
 
 
@@ -175,7 +175,7 @@ hr {
 
 .products-title {
   
-    font-family: "Jersey 20", sans-serif;
+    font-family: "Times New Roman", sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 50px;
@@ -270,6 +270,7 @@ hr {
   background-color: #ffffff;
   padding: 20px 0;
   margin-top: 80px;
+  font-family: "Times New Roman", sans-serif;
 }
 
 .footer-data {
