@@ -10,8 +10,8 @@ const datos={
     productos: [
         {
             imagen: "/images/products/auto1.png",
-            nombreProducto: "volkswagen scirocco",
-            descripcion: "volkswagen scirocco, anio 2016, color black",
+            nombreProducto: "Volkswagen Scirocco",
+            descripcion: "Volkswagen scirocco, anio 2016, color black",
             comentarios: [{
                 nombreUsuario: "Lucas",
                 texto: "Esta genial!",
@@ -34,8 +34,8 @@ const datos={
         },
         {
             imagen: "/images/products/auto2.png",
-            nombreProducto: "volkswagen golf",
-            descripcion: "volkswagen golf, anio 2015, color white",
+            nombreProducto: "Volkswagen Golf",
+            descripcion: "Volkswagen golf, anio 2015, color white",
             comentarios: [{
                 nombreUsuario: "Lucas",
                 texto: "Tremendo coche!",
@@ -59,8 +59,8 @@ const datos={
         },
         {
             imagen: "/images/products/auto3.png",
-            nombreProducto: "volkswagen vento",
-            descripcion: "volkswagen vento, anio 2012, color red",
+            nombreProducto: "Volkswagen Vento",
+            descripcion: "Volkswagen vento, anio 2012, color red",
             comentarios: [{
                 nombreUsuario: "Lucas",
                 texto: "Muy bueno",
@@ -83,9 +83,9 @@ const datos={
         ]
         },
         {
-            imagen: "/images/products/rayomcqueen.png",
+            imagen: "/images/products/auto10.jpeg",
             nombreProducto: "Volkswagen Nivus",
-            descripcion: "volkswagen Nivus, anio 2020, color white",
+            descripcion: "Volkswagen Nivus, anio 2020, color white",
             comentarios: [{
                 nombreUsuario: "Lucas",
                 texto: "Gran auto",
@@ -107,9 +107,9 @@ const datos={
         ]
         },
         {
-            imagen: "",
+            imagen: "/images/products/auto4.png",
             nombreProducto: "Corolla cross",
-            descripcion: "Corolla cross, anio 2016, color red",
+            descripcion: "Corolla cross, anio 2016, color blue",
             comentarios: [{
                 nombreUsuario: "Lucas",
                 texto: "Muy buena",
@@ -131,9 +131,9 @@ const datos={
         ]
         },
         {
-            imagen: "",
-            nombreProducto: "volkswagen scirocco",
-            descripcion: "volkswagen scirocco, anio 2016, color black",
+            imagen: "/images/products/auto5.jpeg",
+            nombreProducto: "Peugeot 208",
+            descripcion: "Peugeot 208, anio 2017, color black",
             comentarios: [{
                 nombreUsuario: "Lucas",
                 texto: "Esta genial!",
@@ -155,9 +155,9 @@ const datos={
         ]
         },
         {
-            imagen: "/images/products/auto1.png",
-            nombreProducto: "volkswagen scirocco",
-            descripcion: "volkswagen scirocco, anio 2016, color black",
+            imagen: "/images/products/auto6.jpeg",
+            nombreProducto: "Honda Fit",
+            descripcion: "Honda Fit, anio 2012, color yellow",
             comentarios: [{
                 nombreUsuario: "Lucas",
                 texto: "Esta genial!",
@@ -179,9 +179,9 @@ const datos={
         ]
         },
         {
-            imagen: "/images/products/auto1.png",
-            nombreProducto: "volkswagen scirocco",
-            descripcion: "volkswagen scirocco, anio 2016, color black",
+            imagen: "/images/products/auto7.jpeg",
+            nombreProducto: "Toyota Yaris",
+            descripcion: "Toyota Yaris, anio 2020, color blue",
             comentarios: [{
                 nombreUsuario: "Lucas",
                 texto: "Esta genial!",
@@ -203,9 +203,9 @@ const datos={
         ]
         },
         {
-            imagen: "/images/products/auto1.png",
-            nombreProducto: "volkswagen scirocco",
-            descripcion: "volkswagen scirocco, anio 2016, color black",
+            imagen: "/images/products/auto8.jpeg",
+            nombreProducto: "Tesla Model 3",
+            descripcion: "Tesla Model 3, anio 2014, color grey",
             comentarios: [{
                 nombreUsuario: "Lucas",
                 texto: "Esta genial!",
@@ -227,9 +227,9 @@ const datos={
         ]
         },
         {
-            imagen: "/images/products/auto1.png",
-            nombreProducto: "volkswagen scirocco",
-            descripcion: "volkswagen scirocco, anio 2016, color black",
+            imagen: "/images/products/auto9.jpeg",
+            nombreProducto: "Toyota Camry",
+            descripcion: "Toyota Camry, anio 2018, color black",
             comentarios: [{
                 nombreUsuario: "Lucas",
                 texto: "Esta genial!",
