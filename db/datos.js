@@ -1,5 +1,5 @@
-const datos={
-    usuario:{
+const datos = {
+    usuario: {
         email: "jksfn@gmail.com",
         contrasenia: "**",
         fechaNacimiento: "2222-12-12",
@@ -30,7 +30,7 @@ const datos={
 
             },
 
-        ]
+            ]
         },
         {
             imagen: "/images/products/auto2.png",
@@ -55,7 +55,7 @@ const datos={
             },
 
 
-        ]
+            ]
         },
         {
             imagen: "/images/products/auto3.png",
@@ -80,7 +80,7 @@ const datos={
             },
 
 
-        ]
+            ]
         },
         {
             imagen: "/images/products/auto10.jpeg",
@@ -104,7 +104,7 @@ const datos={
 
             },
 
-        ]
+            ]
         },
         {
             imagen: "/images/products/auto4.png",
@@ -128,7 +128,7 @@ const datos={
 
             },
 
-        ]
+            ]
         },
         {
             imagen: "/images/products/auto5.jpeg",
@@ -152,7 +152,7 @@ const datos={
 
             },
 
-        ]
+            ]
         },
         {
             imagen: "/images/products/auto6.jpeg",
@@ -176,7 +176,7 @@ const datos={
 
             },
 
-        ]
+            ]
         },
         {
             imagen: "/images/products/auto7.jpeg",
@@ -200,7 +200,7 @@ const datos={
 
             },
 
-        ]
+            ]
         },
         {
             imagen: "/images/products/auto8.jpeg",
@@ -224,7 +224,7 @@ const datos={
 
             },
 
-        ]
+            ]
         },
         {
             imagen: "/images/products/auto9.jpeg",
@@ -248,10 +248,11 @@ const datos={
 
             },
 
-        ]
+            ]
         },
-   
-  
-    ]}
 
-    module.exports = datos;
+
+    ]
+}
+
+module.exports = datos;
