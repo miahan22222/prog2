@@ -9,6 +9,7 @@ const datos = {
     },
     productos: [
         {
+            id: 1,
             imagen: "/images/products/auto1.png",
             nombreProducto: "Volkswagen Scirocco",
             descripcion: "Volkswagen scirocco, anio 2016, color black",
@@ -33,6 +34,7 @@ const datos = {
             ]
         },
         {
+            id: 2,
             imagen: "/images/products/auto2.png",
             nombreProducto: "Volkswagen Golf",
             descripcion: "Volkswagen golf, anio 2015, color white",
@@ -58,6 +60,7 @@ const datos = {
             ]
         },
         {
+            id: 3,
             imagen: "/images/products/auto3.png",
             nombreProducto: "Volkswagen Vento",
             descripcion: "Volkswagen vento, anio 2012, color red",
@@ -83,6 +86,7 @@ const datos = {
             ]
         },
         {
+            id: 4,
             imagen: "/images/products/auto10.jpeg",
             nombreProducto: "Volkswagen Nivus",
             descripcion: "Volkswagen Nivus, anio 2020, color white",
@@ -107,6 +111,7 @@ const datos = {
             ]
         },
         {
+            id: 5,
             imagen: "/images/products/auto4.png",
             nombreProducto: "Corolla cross",
             descripcion: "Corolla cross, anio 2016, color blue",
@@ -131,6 +136,7 @@ const datos = {
             ]
         },
         {
+            id: 6,
             imagen: "/images/products/auto5.jpeg",
             nombreProducto: "Peugeot 208",
             descripcion: "Peugeot 208, anio 2017, color black",
@@ -155,6 +161,7 @@ const datos = {
             ]
         },
         {
+            id: 7,
             imagen: "/images/products/auto6.jpeg",
             nombreProducto: "Honda Fit",
             descripcion: "Honda Fit, anio 2012, color yellow",
@@ -179,6 +186,7 @@ const datos = {
             ]
         },
         {
+            id: 8,
             imagen: "/images/products/auto7.jpeg",
             nombreProducto: "Toyota Yaris",
             descripcion: "Toyota Yaris, anio 2020, color blue",
@@ -203,6 +211,7 @@ const datos = {
             ]
         },
         {
+            id: 9,
             imagen: "/images/products/auto8.jpeg",
             nombreProducto: "Tesla Model 3",
             descripcion: "Tesla Model 3, anio 2014, color grey",
@@ -227,6 +236,7 @@ const datos = {
             ]
         },
         {
+            id: 10,
             imagen: "/images/products/auto9.jpeg",
             nombreProducto: "Toyota Camry",
             descripcion: "Toyota Camry, anio 2018, color black",
@@ -252,7 +262,18 @@ const datos = {
         },
 
 
-    ]
+    ],
+    filtrarPorID: function (idBuscado) {
+        let resultado = {};
+        for (let i = 0; i < this.productos.length; i++) {
+            if (this.productos[i].id == idBuscado) {
+                resultado = this.productos[i];
+            }
+
+        }
+
+        return resultado;
+    }
 }
 
 module.exports = datos;
