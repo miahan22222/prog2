@@ -44,13 +44,39 @@ const usersController = {
     
         },
     
-    vistaDeLogin: function (req, res) {
-        return res.render("login", { productos: datos.productos, usuario: datos.usuario })
+vistaDeLogin: function (req, res) {
+        return res.render("login")
 
-    },
+   }, 
+loginUser: (req, res)=> {
+        let errors = validationResult (req)
+        
+        if (errors.isEmpty()) {
+            let forms = req.body;
+            db.Usuario.findOne({
+                where: [{mail: forms.mail}]
+            })
+            .then((result) => {
 
-    verificacionLogin: function (req, res) {
-        return res.render("profile", { productos: datos.productos, usuario: datos.usuario })
+                    req.session.user = result;
+    
+                    if (forms.recordarme != undefined) {
+                        res.cookie("userId", result.id, {maxAge: 1000 * 60 * 15});                        
+                    }
+    
+                    return res.redirect("/");
+                } 
+                
+            ).catch((err) => {
+                return console.log(err);
+            });
+            
+        }else{
+            return res.render('login', {
+                    errors: errors.mapped(),
+                old: req.body
+            })
+        }
     },
 
     vistadeProfile: function (req, res) {

@@ -2,13 +2,14 @@
 <html lang="es">
 <!-- Include Head -->
 
-<!-- Include Head -->
-
 <%- include('./partials/head.ejs' ) %>
-
 <body>
 	<!-- Header -->
-	<%- include('./partials/headerDeslogueado.ejs' ) %>
+	<% if (locals.user != undefined) { %>
+		<%- include('./partials/headerLogueado.ejs' ) %>
+	 <% } else { %>
+		<%- include('./partials/headerDeslogueado.ejs' ) %>
+	<% } %>
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -19,11 +20,17 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> <i>
-					<form action="/users/login/verify" method="get">
-						<input type="email" name="usuario" value="" placeholder="email" required>
-						<input type="password" name="contraseña" value=" " placeholder="contraseña" required>
-						<input type="checkbox" name="recordarme" value=" " placeholder="recordarme">
-						<button type="submit" value="Iniciar sesión"></button>
+					<form action="/users/login" method="post">
+						<input type="email" name="mail" value="" placeholder="email" >
+						<% if (locals.errors && errors.mail) { %>
+							<p class="error"><%= errors.mail.msg%></p>
+						   <% } %>
+						<input type="password" name="contrasenia" value="" placeholder="contra" >
+						<% if (locals.errors && errors.contrasenia) { %>
+							<p class="error"><%= errors.contrasenia.msg%></p>
+						   <% } %>
+						<input type="checkbox" name="recordarme" placeholder="recordarme">
+						<button type="submit" value="Iniciar sesión">Ingresar</button>
 
 					</form>
 
