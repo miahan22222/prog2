@@ -1,16 +1,49 @@
-const datos = require('../db/datos')
+const db = require('../database/models');
+const bcrypt = require("bcryptjs");
+const {validationResult} = require('express-validator')
 
 const usersController = {
     vistaDeRegister: function (req, res) {
-        return res.render("register", { productos: datos.productos, usuario: datos.usuario })
+        if (req.session.user != undefined){
+            return res.redirect('/');
+        }else {
+        return res.render("register")}
     },
-    verificacionForm: function (req, res) {
-        return res.render("login", { productos: datos.productos, usuario: datos.usuario })
-        //no se que se tiene que ver una vez que el usuario manda el form
-        //     VerificacionForm: function(req, res) {
-        //console.log('Formulario recibido con los siguientes datos:',req.query)
-        //return res.send("Formulario recibido correctamente. Datos: " + JSON.stringify(req.query));
-    },
+    storeRegister: function (req, res) {
+        let errors = validationResult (req)
+        //return res.send(errors)
+        if (errors.isEmpty()) {
+            let forms = req.body;
+    
+            let user = {
+                nombre: forms.nombre,
+                apellido: forms.apellido,
+                usuario: forms.usuario,
+                mail: forms.email,
+                contrasenia: bcrypt.hashSync(forms.contra, 10),
+                fechaNacimiento: forms.fecha,
+                numeroDocumento: forms.dni,
+                fotoPerfil: forms.fotoPerfil,
+        
+            }
+            
+            db.Usuario.create(user)
+            .then((result) => {
+                return res.redirect("/users/login");
+            }).catch((err) => {
+                return console.log(err);
+            });
+    
+        }else{
+            return res.render('register', {
+                    errors: errors.mapped(),
+                old: req.body
+            })
+        }
+      
+    
+        },
+    
     vistaDeLogin: function (req, res) {
         return res.render("login", { productos: datos.productos, usuario: datos.usuario })
 

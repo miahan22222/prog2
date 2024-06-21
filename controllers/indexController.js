@@ -1,4 +1,4 @@
-const datos = require('../db/datos')
+const db = require('../database/models')
 
 const indexController = {
     vistaDeindex: function (req, res) {
