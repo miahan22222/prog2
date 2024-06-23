@@ -2,9 +2,23 @@ const db = require('../database/models')
 const op = db.Sequelize.Op;
 
 const indexController = {
-    vistaDeindex: function (req, res) {
-        return res.render("index", { productos: datos.productos, usuario: datos.usuario })
-    },
+  vistaDeindex: function (req, res) {
+    const criterio = {
+            include : [
+                {association: "usuario"}
+            ],
+            order: [['createdAt', 'DESC']] ,
+        }
+
+            db.Producto.findAll(criterio)
+                .then(function (result) {
+                    //return res.send(results)
+                    res.render("index", {productos: result});
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
 
     vistaDeSearch: function (req, res) {
         return res.render("search-results")

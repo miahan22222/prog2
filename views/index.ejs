@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
-
-
-	<!-- Include Head -->
-
-<%- include('./partials/head.ejs' ) %>
+	
+	<%- include('./partials/head.ejs' ) %>
 
 	<body>
 		<!-- Header -->
-		<%- include('./partials/headerDeslogueado.ejs' ) %>
+		<% if (locals.user!= undefined) { %>
+			<%- include('./partials/headerLogueado.ejs' ) %>
+		 <% } else { %>
+			<%- include('./partials/headerDeslogueado.ejs' ) %>
+		<% } %>
+		
 		<!-- Banner -->
 		<div class="banner">
 			<img src="/images/banner2.jpeg" alt="Banner de ofertas">
@@ -26,18 +28,21 @@
 				<% for (let i=0; i < 4; i++) {%>
 					<div class="col-12 col-sm-6 col-lg-3">
 						<section class="product-box">
-							<a href="/product/">
+							<a href="/product/id/<%= productos[i].id %>">
 								<figure class="product-box_image">
-									<img src=<%=productos[i].imagen%> alt="">
+									<img src="/images/products/<%=productos[i].imagenProducto%>" alt="">
 								</figure>
 								<article class="product-box_data">
 									<h2>
 										<%= productos[i].nombreProducto %>
 									</h2>
 									<p>
-										<%= productos[i].descripcion %>
+										<%= productos[i].descripcionProducto %>
 									</p>
-									<p>Comentarios: 3</p>
+									<p> <a href="/users/id/<%= productos[i].idUsuario %>">
+										Usuario: <%= productos[i].usuario.usuario %>
+									</a>  
+									</p>
 								</article>
 							</a>
 						</section>
@@ -61,18 +66,21 @@
 				<% for (let i=5; i < 9; i++) {%>
 					<div class="col-12 col-sm-6 col-lg-3">
 						<section class="product-box">
-							<a href="/product/">
+							<a href="/product/id/<%= productos[i].id %>">
 								<figure class="product-box_image">
-									<img src=<%=productos[i].imagen%> alt="">
+									<img src="/images/products/<%=productos[i].imagenProducto%>" alt="">
 								</figure>
 								<article class="product-box_data">
 									<h2>
 										<%= productos[i].nombreProducto %>
 									</h2>
 									<p>
-										<%= productos[i].descripcion %>
+										<%= productos[i].descripcionProducto %>
 									</p>
-									<p>Comentarios: 3</p>
+									<p> <a href="/users/id/<%= productos[i].idUsuario %>">
+										Usuario: <%= productos[i].usuario.usuario %>
+									</a>  
+									</p>
 								</article>
 							</a>
 						</section>

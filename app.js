@@ -8,11 +8,9 @@ const db = require('./database/models');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productRouter = require('./routes/product');
-
-
+const session = require('express-session');
 
 var app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -22,6 +20,36 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: "myapp",
+  resave: false,
+  saveUninitialized: true,
+  
+})); 
+
+app.use(function(req,res,next){
+  if (req.session.user != undefined){
+    res.locals.user= req.session.user
+  }
+  return next ();
+  
+});
+
+app.use(function(req, res, next) { 
+  if (req.cookies.userId != undefined && req.session.user == undefined) { 
+    let idUsuario = req.cookies.userId; /* 6 */
+    db.Usuario.findByPk(idUsuario) 
+    .then((result) => { 
+      req.session.user = result;
+       res.locals.user = result; 
+       return next();
+       }).catch((err) => { 
+        return console.log(err);
+       }); /* buscar el id en la db */
+       } else { 
+        return next(); } })
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
