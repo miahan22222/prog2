@@ -71,6 +71,62 @@ const productsController = {
     }
 
     },
+    storeComment: function (req, res) {
+        if (req.session.user == undefined) {
+            return res.redirect("/users/login");
+        }
+
+       let errors = validationResult(req)
+       //console.log("errors : " , JSON.stringify(errors,null,4));
+
+        if (errors.isEmpty()) {//falta hacer que se relacione con el usuario que lo crea
+
+
+            let forms = req.body;
+
+            let comment = {
+                textoComentario: forms.Add,
+                idUsuario: req.session.user.id,
+                idProducto: req.params.idProducto
+            }
+
+            db.Comentario.create(comment)
+                .then((result) => {
+
+                    return res.redirect("/product/id/"+ req.params.idProducto);
+                }).catch((err) => {
+                    return console.log(err);
+                });
+        }
+       else {
+        let filtrado = {
+            include: [
+                { association: "usuario" },
+                {
+                    association: "comentario",
+                    include: ["usuarios"],
+
+                }
+            ],
+           
+        }
+        db.Producto.findByPk(req.params.idProducto, filtrado)
+            .then(function (result) {
+                return res.render('product', {
+                errors: errors.mapped(),
+                old: req.body,
+                productos: result
+           })
+
+            }).catch((err) => {
+            return console.log(err);
+        });
+        
+   }
+
+
+    },
+
     showFormUpdate: function (req, res) {
         if (req.session.user == undefined) {
             return res.redirect("/users/login");

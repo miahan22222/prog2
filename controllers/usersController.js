@@ -107,10 +107,100 @@ loginUser: (req, res)=> {
 
     },
 
-    vistadeEditProfile: function (req, res) {
-        return res.render("profile-edit", { productos: datos.productos, usuario: datos.usuario })
 
-    },
+    showFormUpdatePerfil: function (req, res) {
+        //return res.send(req.session.user)
+         if (req.session.user == undefined) {
+             return res.redirect("/users/login");
+         }
+            
+         let id = req.params.idUsuario;
+  
+         db.Usuario.findByPk(id)
+         .then((result) => {
+        // return res.send(result)
+         if (req.session.user.id != result.id) {
+             return res.send("No podes editar un perfil que no es tuyo");
+         }
+           return res.render("profile-edit", {usuario: result});
+         }).catch((err) => {
+             return console.log(err);
+         });
+         
+       },
+ 
+ 
+ updatePerfil: function(req, res) {
+  let errors = validationResult (req)
+ 
+ 
+
+ 
+ if (errors.isEmpty()) {
+     let forms = req.body;
+
+     let filtro;
+   if (forms.contrasenia == ""){
+        filtro = {
+         id: forms.id,
+         nombre: forms.nombre,
+         apellido: forms.apellido,
+         mail: forms.email,
+         usuario: forms.usuario,
+         contrasenia: req.session.user.contrasenia,
+         fechaNacimiento: forms.fecha,
+         numeroDocumento: forms.dni,
+         fotoPerfil: forms.fotoPerfil,
+     }
+     }else {
+         filtro = {
+             id: forms.id,
+             nombre: forms.nombre,
+             apellido: forms.apellido,
+             mail: forms.email,
+             usuario: forms.usuario,
+             contrasenia: bcrypt.hashSync(forms.contrasenia, 10),
+             fechaNacimiento: forms.fecha,
+             numeroDocumento: forms.dni,
+             fotoPerfil: forms.fotoPerfil,
+         }
+     }
+        
+         db.Usuario.update(filtro, {where: [{id: forms.id}]} )
+         .then((result) => {
+           return res.redirect("/users/id/"+ forms.id);
+         }).catch((err) => {
+           return console.log(err);
+         });
+    
+    }else{
+ 
+         let id = req.session.user.id
+     
+  
+         db.Usuario.findByPk(id)
+         .then((result) => {
+ 
+           return res.render("profile-edit",{
+         errors: errors.mapped(),
+           old: req.body,
+           usuario: result});
+         
+         }).catch((err) => {
+             return console.log(err);
+         });
+         
+       
+ 
+      
+      
+    }
+     
+   
+       },
+ 
+   
+ 
 
     logout: function(req, res) {
         req.session.destroy();

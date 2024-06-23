@@ -66,6 +66,30 @@ body('contrasenia')
       })
   })
 ]
+let validationsEdit = [
+  body('nombre')
+  .notEmpty()
+  .withMessage('Debes ingresar un nombre de usuario')
+  .bail(),
+
+  body('email')
+  .notEmpty().withMessage('Debes ingresar un email').bail(),
+  //isEmail
+
+  body('contrasenia')
+  .custom(function (value, {req}) {
+    if (!value){
+      return true;
+    }
+    if (value.length <4){
+      throw new Error ("Debes ingresar una contrasenia con minimo 4 caracteres");
+    }
+    if (value.length >4){
+      return true;
+    }
+    })
+
+]
 
 const usersController = require('../controllers/usersController');
 
@@ -76,6 +100,7 @@ router.get("/login", usersController.vistaDeLogin)
 router.post("/login", validationsLogin, usersController.loginUser)
 router.get("/id/:idUsuario", usersController.vistadeProfile);
 router.get("/profile-edit", usersController.vistadeEditProfile);
+router.post("/updatePerfil/", validationsEdit, usersController.updatePerfil);
 router.post('/logout', usersController.logout);
 
 
