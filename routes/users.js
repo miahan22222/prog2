@@ -74,7 +74,7 @@ router.get("/register", usersController.vistaDeRegister)
 router.post('/register', validations, usersController.storeRegister);
 router.get("/login", usersController.vistaDeLogin)
 router.post("/login", validationsLogin, usersController.loginUser)
-router.get("/profile", usersController.vistadeProfile);
+router.get("/id/:idUsuario", usersController.vistadeProfile);
 router.get("/profile-edit", usersController.vistadeEditProfile);
 router.post('/logout', usersController.logout);
 

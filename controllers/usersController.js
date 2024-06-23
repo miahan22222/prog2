@@ -80,7 +80,30 @@ loginUser: (req, res)=> {
     },
 
     vistadeProfile: function (req, res) {
-        return res.render("profile", { productos: datos.productos, usuario: datos.usuario })
+        if (req.session.user == undefined) {
+            return res.redirect("/users/login");
+        }
+    
+        const criterio = {
+            where: {id: req.params.idUsuario},
+            include : [
+            
+                {association: "productos",
+                 } ],
+                
+              
+    
+        }
+      
+        db.Usuario.findOne(criterio)
+        .then(function(result) {
+            //return res.send(result)
+           
+            return res.render("profile", {usuario:result})
+            })
+            .catch((err) => {
+            return console.log(err);
+            });
 
     },
 

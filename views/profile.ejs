@@ -3,13 +3,15 @@
 
 <!-- Include Head -->
 
-<!-- Include Head -->
-
 <%- include('./partials/head.ejs' ) %>
 <body>
 
 	<!-- /Header -->
-	<%- include('./partials/headerLogueado.ejs' ) %>
+	<% if (locals.user != undefined) { %>
+		<%- include('./partials/headerLogueado.ejs' ) %>
+	 <% } else { %>
+		<%- include('./partials/headerDeslogueado.ejs' ) %>
+	<% } %>
 	<!-- Datos del usuario -->
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
@@ -19,8 +21,8 @@
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"><%=usuario.nombreUsuario%>
-						<a href="/users/profile-edit">
+					<h1 class="main-title"><%=usuario.usuario%>
+						<a href="/users/profile-edit/<%=usuario.id%>">
 							<i class="fas fa-cog"></i>
 						</a>
 					</h1>
@@ -28,9 +30,8 @@
 				</div>
 				<div>
 					<ul class="">
-						<li>8 productos</li>
-						<li>200 seguidores</li>
-						<li>300 comentarios</li>
+						<li>Cantidad de Productos:<%=usuario.productos.length%></li>
+						
 					</ul>
 				</div>
 			</div>
@@ -45,26 +46,33 @@
 				<h2 class="products-title">Mis productos</h2>
 			</div>
 
-			<% for (let i=0; i < 8; i++) {%>
+			<% if (usuario.productos.length == 0) { %>
+				<h2>No tiene productos </h2>
+			 <% } else { %> 
+			
+
+			<% for (let i= (usuario.productos.length -1); i > -1; i--) {%>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product/">
+						<a href="/product/id/<%=usuario.productos[i].id%>">
 							<figure class="product-box_image">
-								<img src=<%=productos[i].imagen%> alt="">
+								<img src="/images/products/<%=usuario.productos[i].imagenProducto%>" alt="">
+								
 							</figure>
 							<article class="product-box_data">
 								<h2>
-									<%= productos[i].nombreProducto %>
+									<%= usuario.productos[i].nombreProducto %>
 								</h2>
 								<p>
-									<%= productos[i].descripcion %>
+									<%= usuario.productos[i].descripcionProducto %>
 								</p>
-								<p>Comentarios: 3</p>
+							
 							</article>
 						</a>
 					</section>
 				</div>
 				<%} %>
+				<% } %>
 			<!-- Show mis productos -->
 			
 	<!-- /Mis productos -->
