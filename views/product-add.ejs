@@ -2,13 +2,14 @@
 <html lang="es">
 <!-- Include Head -->
 
-<!-- Include Head -->
-
 <%- include('./partials/head.ejs' ) %>
-
 <body>
 	<!-- Header -->
-	<%- include('./partials/headerLogueado.ejs' ) %>
+	<% if (locals.user != undefined) { %>
+		<%- include('./partials/headerLogueado.ejs' ) %>
+	 <% } else { %>
+		<%- include('./partials/headerDeslogueado.ejs' ) %>
+	<% } %>
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -19,11 +20,20 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12">
-				<form action="/product/Add/" method="get">
-					<p><input type="file" name="Imagen" value="" placeholder="Imagen" required></p>
-					<p>Nombre <input type="text" name="Nombre" value=" " placeholder="Nombre" required></p>
-					<p>Descripcion <input type="text" name="Descripcion" value=" " placeholder="Descripcion"></p>
-					<button type="submit" value=" "></button>
+				<form action="/product/Add/" method="post">
+					<p>Imagen: <input type="text" name="Imagen" value="" placeholder="Imagen" ></p>
+					<% if (locals.errors && errors.Imagen) { %>
+						<p class="error"><%= errors.Imagen.msg%></p>
+					<% } %>
+					<p>Nombre: <input type="text" name="Nombre" value="" placeholder="Nombre" ></p>
+					<% if (locals.errors && errors.Nombre) { %>
+						<p class="error"><%= errors.Nombre.msg%></p>
+					<% } %>
+					<p>Descripcion: <input type="text" name="Descripcion" value="" placeholder="Descripcion" ></p>
+					<% if (locals.errors && errors.Descripcion) { %>
+						<p class="error"><%= errors.Descripcion.msg%></p>
+					<% } %>
+					<button type="submit" value=" ">AGREGAR</button>
 
 				</form>
 			</h2>
