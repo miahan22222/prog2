@@ -3,10 +3,13 @@
 <!-- Include Head -->
 
 <%- include('./partials/head.ejs' ) %>
-
-
+<!-- Include Header -->
+<% if (locals.user != undefined) { %>
+	<%- include('./partials/headerLogueado.ejs' ) %>
+ <% } else { %>
+	<%- include('./partials/headerDeslogueado.ejs' ) %>
+<% } %>
 	<body>
-		<%- include('./partials/headerDeslogueado.ejs' ) %>
 		<!-- Novedades -->
 		<div class="container products-wrapper">
 			<div class="row">
@@ -15,26 +18,31 @@
 				</div>
 				<!-- Show the "ultimos" products -->
 				<h2 class="col-12">
-					<% for (let i=0; i < 1; i++) {%>
+					<% for (let i=0; i < productos.length; i++) {%>
 						<div class="col-12 col-sm-6 col-lg-3">
 							<section class="product-box">
-								<a href="/product/">
+								<a href="/product/id/<%=productos[i].id%>">
 									<figure class="product-box_image">
-										<img src=<%=productos[i].imagen%> alt="">
+										<img src="/images/products/<%=productos[i].imagenProducto%>" alt="">
 									</figure>
 									<article class="product-box_data">
 										<h2>
 											<%= productos[i].nombreProducto %>
 										</h2>
-
-										<%= productos[i].descripcion %>
-
-											<p>Comentarios: 3</p>
+										<p>
+											<%= productos[i].descripcionProducto %>
+										</p>
+										<p> <a href="/users/id/<%= productos[i].idUsuario %>">
+											Usuario: <%= productos[i].usuario.usuario %>
+										</a>  
+										</p>
+										
 									</article>
 								</a>
 							</section>
 						</div>
 						<%} %>
+					
 				</h2>
 
 
