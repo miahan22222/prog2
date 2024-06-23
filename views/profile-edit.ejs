@@ -3,60 +3,80 @@
 <!-- Include Head -->
 
 <%- include('./partials/head.ejs' ) %>
-<body>
-	<!-- Header -->
-	<% if (locals.user != undefined) { %>
-		<%- include('./partials/headerLogueado.ejs' ) %>
-	 <% } else { %>
-		<%- include('./partials/headerDeslogueado.ejs' ) %>
-	<% } %>
-	<!-- /Header -->
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Editar mi perfil</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> 
-				<form action="/users/updatePerfil/" method="POST">
-					<input type="hidden" name="id" value="<%= usuario.id %>">
-					<input type="text" name="nombre" value="<%= usuario.nombre %>" placeholder="Ingrese su nombre"> <br>
-					<% if (locals.errors && errors.nombre) { %>
-						<p class="error"><%= errors.nombre.msg%></p>
-					   <% } %>
-					<input type="text" name="apellido" value="<%= usuario.apellido %>" placeholder="Ingrese su apellido" > <br>
-					
-					<input type="email" name="email" value="<%= usuario.mail %>" placeholder="Ingrese su email" > <br>
-				
-					<% if (locals.errors && errors.email) { %>
-						<p class="error"><%= errors.email.msg%></p>
-					<% } %>
+	<body>
+		<!-- Header -->
+		<% if (locals.user !=undefined) { %>
+			<%- include('./partials/headerLogueado.ejs' ) %>
+				<% } else { %>
+					<%- include('./partials/headerDeslogueado.ejs' ) %>
+						<% } %>
+							<!-- /Header -->
 
-					<input type="password" name="contrasenia" value="" placeholder="Cree una contrasena" ><br>
-					
-					<% if (locals.errors && errors.contrasenia) { %>
-						<p class="error"><%= errors.contrasenia.msg%></p>
-					   <% } %>
-		
-					<input type="text" name="usuario" value="<%= usuario.usuario %>" placeholder="Elija un nombre de usuario" ><br>
-					<input type="number" name="dni" value="<%= usuario.numeroDocumento %>" placeholder="Ingrese DNI" ><br>
-					<input type="text" name="fotoPerfil" value="<%= usuario.fotoPerfil %>" placeholder="foto de perfil" ><br>
-					<input type="hidden" name="fecha" value="<%= usuario.fechaNacimiento %> " placeholder="Fecha de nacimiento" > <br>
-					<button type="submit" value="Registrarse">EDITAR</button>
-				</form>
-	
-			</h2>
-			
+							<!-- Novedades -->
+							<div class="container products-wrapper">
+								<div class="row">
+									<div class="col-12">
+										<h2 class="products-title">Editar mi perfil</h2>
+									</div>
+									<!-- Show the "ultimos" products -->
+									<h2 class="col-12">
+										<form action="/users/updatePerfil/" method="POST">
+											<input type="hidden" name="id" value="<%= usuario.id %>">
+											<input type="text" name="nombre" value="<%= usuario.nombre %>"
+												placeholder="Ingrese su nombre"> <br>
+											<% if (locals.errors && errors.nombre) { %>
+												<p class="error">
+													<%= errors.nombre.msg%>
+												</p>
+												<% } %>
+													<input type="text" name="apellido" value="<%= usuario.apellido %>"
+														placeholder="Ingrese su apellido"> <br>
+
+													<input type="email" name="email" value="<%= usuario.mail %>"
+														placeholder="Ingrese su email"> <br>
+
+													<% if (locals.errors && errors.email) { %>
+														<p class="error">
+															<%= errors.email.msg%>
+														</p>
+														<% } %>
+
+															<input type="password" name="contrasenia" value=""
+																placeholder="Cree una contrasena"><br>
+
+															<% if (locals.errors && errors.contrasenia) { %>
+																<p class="error">
+																	<%= errors.contrasenia.msg%>
+																</p>
+																<% } %>
+
+																	<input type="text" name="usuario"
+																		value="<%= usuario.usuario %>"
+																		placeholder="Elija un nombre de usuario"><br>
+																	<input type="number" name="dni"
+																		value="<%= usuario.numeroDocumento %>"
+																		placeholder="Ingrese DNI"><br>
+																	<input type="text" name="fotoPerfil"
+																		value="<%= usuario.fotoPerfil %>"
+																		placeholder="foto de perfil"><br>
+																	<input type="hidden" name="fecha"
+																		value="<%= usuario.fechaNacimiento %> "
+																		placeholder="Fecha de nacimiento"> <br>
+																	<button type="submit"
+																		value="Registrarse">EDITAR</button>
+										</form>
+
+									</h2>
 
 
 
 
 
-			<!-- footer -->
-			<%- include('./partials/footer.ejs' ) %>
-			<!-- /footer -->
-</body>
+
+									<!-- footer -->
+									<%- include('./partials/footer.ejs' ) %>
+										<!-- /footer -->
+	</body>
 
 </html>

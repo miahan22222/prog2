@@ -3,52 +3,69 @@
 <!-- Include Head -->
 
 <%- include('./partials/head.ejs' ) %>
-<body>
-	<!-- Header -->
-	<% if (locals.user != undefined) { %>
-		<%- include('./partials/headerLogueado.ejs' ) %>
-	 <% } else { %>
-		<%- include('./partials/headerDeslogueado.ejs' ) %>
-	<% } %>
-	<!-- /Header -->
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Registrate</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
+	<body>
+		<!-- Header -->
+		<% if (locals.user !=undefined) { %>
+			<%- include('./partials/headerLogueado.ejs' ) %>
+				<% } else { %>
+					<%- include('./partials/headerDeslogueado.ejs' ) %>
+						<% } %>
+							<!-- /Header -->
 
-			<form action="/users/register" method="post">
-				<input type="text" name="nombre" value="" placeholder="Ingrese su nombre"> <br>
-				<% if (locals.errors && errors.nombre) { %>
-				 <p class="error"><%= errors.nombre.msg%></p>
-				<% } %>
-				<input type="text" name="apellido" value="" placeholder="Ingrese su apellido" > <br>
-				<input type="email" name="email" value="" placeholder="Ingrese su email" > <br>
-				<% if (locals.errors && errors.email) { %>
-					<p class="error"><%= errors.email.msg%></p>
-				   <% } %>
-				<input type="password" name="contra" value="" placeholder="Cree una contra" ><br>
-				<% if (locals.errors && errors.contra) { %>
-					<p class="error"><%= errors.contra.msg%></p>
-				   <% } %>
-				<input type="text" name="usuario" value="" placeholder="Elija un nombre de usuario" ><br>
-				<% if (locals.errors && errors.usuario) { %>
-					<p class="error"><%= errors.usuario.msg%></p>
-				   <% } %>
-				<input type="date" name="fecha" value=" " placeholder="Fecha de nacimiento" > <br>
-				<input type="number" name="dni" value="" placeholder="Ingrese DNI" ><br>
-				<input type="text" name="fotoPerfil" value="" placeholder="foto de perfil" ><br>
-				<button type="submit" value="Registrarse">Crear nuevo usuario</button>
-			</form>
+							<!-- Novedades -->
+							<div class="container products-wrapper">
+								<div class="row">
+									<div class="col-12">
+										<h2 class="products-title">Registrate</h2>
+									</div>
+									<!-- Show the "ultimos" products -->
+
+									<form action="/users/register" method="post">
+										<input type="text" name="nombre" value="" placeholder="Ingrese su nombre"> <br>
+										<% if (locals.errors && errors.nombre) { %>
+											<p class="error">
+												<%= errors.nombre.msg%>
+											</p>
+											<% } %>
+												<input type="text" name="apellido" value=""
+													placeholder="Ingrese su apellido"> <br>
+												<input type="email" name="email" value=""
+													placeholder="Ingrese su email"> <br>
+												<% if (locals.errors && errors.email) { %>
+													<p class="error">
+														<%= errors.email.msg%>
+													</p>
+													<% } %>
+														<input type="password" name="contra" value=""
+															placeholder="Cree una contra"><br>
+														<% if (locals.errors && errors.contra) { %>
+															<p class="error">
+																<%= errors.contra.msg%>
+															</p>
+															<% } %>
+																<input type="text" name="usuario" value=""
+																	placeholder="Elija un nombre de usuario"><br>
+																<% if (locals.errors && errors.usuario) { %>
+																	<p class="error">
+																		<%= errors.usuario.msg%>
+																	</p>
+																	<% } %>
+																		<input type="date" name="fecha" value=" "
+																			placeholder="Fecha de nacimiento"> <br>
+																		<input type="number" name="dni" value=""
+																			placeholder="Ingrese DNI"><br>
+																		<input type="text" name="fotoPerfil" value=""
+																			placeholder="foto de perfil"><br>
+																		<button type="submit" value="Registrarse">Crear
+																			nuevo usuario</button>
+									</form>
 
 
 
-			<!-- footer -->
-			<%- include('./partials/footer.ejs' ) %>
-			<!-- /footer -->
-</body>
+									<!-- footer -->
+									<%- include('./partials/footer.ejs' ) %>
+										<!-- /footer -->
+	</body>
 
 </html>

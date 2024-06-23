@@ -3,43 +3,51 @@
 <!-- Include Head -->
 
 <%- include('./partials/head.ejs' ) %>
-<body>
-	<!-- Header -->
-	<% if (locals.user != undefined) { %>
-		<%- include('./partials/headerLogueado.ejs' ) %>
-	 <% } else { %>
-		<%- include('./partials/headerDeslogueado.ejs' ) %>
-	<% } %>
-	<!-- /Header -->
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Ingresar</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>
-					<form action="/users/login" method="post">
-						<input type="email" name="mail" value="" placeholder="email" >
-						<% if (locals.errors && errors.mail) { %>
-							<p class="error"><%= errors.mail.msg%></p>
-						   <% } %>
-						<input type="password" name="contrasenia" value="" placeholder="contra" >
-						<% if (locals.errors && errors.contrasenia) { %>
-							<p class="error"><%= errors.contrasenia.msg%></p>
-						   <% } %>
-						<input type="checkbox" name="recordarme" placeholder="recordarme">
-						<button type="submit" value="Iniciar sesión">Ingresar</button>
+	<body>
+		<!-- Header -->
+		<% if (locals.user !=undefined) { %>
+			<%- include('./partials/headerLogueado.ejs' ) %>
+				<% } else { %>
+					<%- include('./partials/headerDeslogueado.ejs' ) %>
+						<% } %>
+							<!-- /Header -->
 
-					</form>
+							<!-- Novedades -->
+							<div class="container products-wrapper">
+								<div class="row">
+									<div class="col-12">
+										<h2 class="products-title">Ingresar</h2>
+									</div>
+									<!-- Show the "ultimos" products -->
+									<h2 class="col-12"> <i>
+											<form action="/users/login" method="post">
+												<input type="email" name="mail" value="" placeholder="email">
+												<% if (locals.errors && errors.mail) { %>
+													<p class="error">
+														<%= errors.mail.msg%>
+													</p>
+													<% } %>
+														<input type="password" name="contrasenia" value=""
+															placeholder="contra">
+														<% if (locals.errors && errors.contrasenia) { %>
+															<p class="error">
+																<%= errors.contrasenia.msg%>
+															</p>
+															<% } %>
+																<input type="checkbox" name="recordarme"
+																	placeholder="recordarme">
+																<button type="submit"
+																	value="Iniciar sesión">Ingresar</button>
 
-			</h2>
+											</form>
+
+									</h2>
 
 
-			<!-- footer -->
-			<%- include('./partials/footer.ejs' ) %>
-			<!-- /footer -->
-</body>
+									<!-- footer -->
+									<%- include('./partials/footer.ejs' ) %>
+										<!-- /footer -->
+	</body>
 
 </html>

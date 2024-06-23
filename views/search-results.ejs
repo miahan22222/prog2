@@ -3,52 +3,54 @@
 <!-- Include Head -->
 
 <%- include('./partials/head.ejs' ) %>
-<!-- Include Header -->
-<% if (locals.user != undefined) { %>
-	<%- include('./partials/headerLogueado.ejs' ) %>
- <% } else { %>
-	<%- include('./partials/headerDeslogueado.ejs' ) %>
-<% } %>
-	<body>
-		<!-- Novedades -->
-		<div class="container products-wrapper">
-			<div class="row">
-				<div class="col-12">
-					<h2 class="products-title">Resultados de búsqueda</h2>
-				</div>
-				<!-- Show the "ultimos" products -->
-				<h2 class="col-12">
-					<% for (let i=0; i < productos.length; i++) {%>
-						<div class="col-12 col-sm-6 col-lg-3">
-							<section class="product-box">
-								<a href="/product/id/<%=productos[i].id%>">
-									<figure class="product-box_image">
-										<img src="/images/products/<%=productos[i].imagenProducto%>" alt="">
-									</figure>
-									<article class="product-box_data">
-										<h2>
-											<%= productos[i].nombreProducto %>
-										</h2>
-										<p>
-											<%= productos[i].descripcionProducto %>
-										</p>
-										<p> <a href="/users/id/<%= productos[i].idUsuario %>">
-											Usuario: <%= productos[i].usuario.usuario %>
-										</a>  
-										</p>
-										
-									</article>
-								</a>
-							</section>
-						</div>
-						<%} %>
-					
-				</h2>
+	<!-- Include Header -->
+	<% if (locals.user !=undefined) { %>
+		<%- include('./partials/headerLogueado.ejs' ) %>
+			<% } else { %>
+				<%- include('./partials/headerDeslogueado.ejs' ) %>
+					<% } %>
+
+						<body>
+							<!-- Novedades -->
+							<div class="container products-wrapper">
+								<div class="row">
+									<div class="col-12">
+										<h2 class="products-title">Resultados de búsqueda</h2>
+									</div>
+									<!-- Show the "ultimos" products -->
+									<h2 class="col-12">
+										<% for (let i=0; i < productos.length; i++) {%>
+											<div class="col-12 col-sm-6 col-lg-3">
+												<section class="product-box">
+													<a href="/product/id/<%=productos[i].id%>">
+														<figure class="product-box_image">
+															<img src="/images/products/<%=productos[i].imagenProducto%>"
+																alt="">
+														</figure>
+														<article class="product-box_data">
+															<h2>
+																<%= productos[i].nombreProducto %>
+															</h2>
+															<p>
+																<%= productos[i].descripcionProducto %>
+															</p>
+															<p> <a href="/users/id/<%= productos[i].idUsuario %>">
+																	Usuario: <%= productos[i].usuario.usuario %>
+																</a>
+															</p>
+
+														</article>
+													</a>
+												</section>
+											</div>
+											<%} %>
+
+									</h2>
 
 
-				<!-- footer -->
-				<%- include('./partials/footer.ejs' ) %>
-				<!-- /footer -->
-	</body>
+									<!-- footer -->
+									<%- include('./partials/footer.ejs' ) %>
+										<!-- /footer -->
+						</body>
 
 </html>

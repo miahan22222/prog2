@@ -1,52 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/head.ejs' ) %>
-    <!-- Include Header -->
-    <% if (locals.user != undefined) { %>
-        <%- include('./partials/headerLogueado.ejs' ) %>
-     <% } else { %>
+<%- include('./partials/head.ejs' ) %>
+  <!-- Include Header -->
+  <% if (locals.user !=undefined) { %>
+    <%- include('./partials/headerLogueado.ejs' ) %>
+      <% } else { %>
         <%- include('./partials/headerDeslogueado.ejs' ) %>
-    <% } %>
-<body>
-    <main class="container main-container">
-     
-       
-          
-        <!-- Formulario de Registro -->
+          <% } %>
 
-        <div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Editar Producto</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12">
-                <form class="form" action="/product/update/<%= productos.id %>" method="POST">
-                    <input type="hidden" name="idUsuario" value="<%= productos.idUsuario %>">
-                     <input type="hidden" name="id" value="<%= productos.id %>">
-                    
-                    <div class="input-container ic1">
-                      <p> Nombre  <input id="title" class="input" type="text" name="nombre" placeholder="Nombre" value="<%= productos.nombreProducto %>" /></p>
-                    </div>
-                    <% if (locals.errors && errors.nombre) { %>
-                      <p class="error"><%= errors.nombre.msg%></p>
-                    <% } %>
-                      <div class="input-container ic2">
-                          <p>Imagen<input id="title" class="input" type="text" name="imagen" placeholder="imagen" value="<%= productos.imagenProducto %>" /></p>
+            <body>
+              <main class="container main-container">
+
+
+
+                <!-- Formulario de Registro -->
+
+                <div class="row">
+                  <div class="col-12">
+                    <h2 class="products-title">Editar Producto</h2>
+                  </div>
+                  <!-- Show the "ultimos" products -->
+                  <h2 class="col-12">
+                    <form class="form" action="/product/update/<%= productos.id %>" method="POST">
+                      <input type="hidden" name="idUsuario" value="<%= productos.idUsuario %>">
+                      <input type="hidden" name="id" value="<%= productos.id %>">
+
+                      <div class="input-container ic1">
+                        <p> Nombre <input id="title" class="input" type="text" name="nombre" placeholder="Nombre"
+                            value="<%= productos.nombreProducto %>" /></p>
                       </div>
-                      <% if (locals.errors && errors.imagen) { %>
-                        <p class="error"><%= errors.imagen.msg%></p>
-                      <% } %>
-                      <p>Descripcion <input type="text" name="Descripcion" value="<%= productos.descripcionProducto %> " placeholder="Descripcion" ></p>
-                      <% if (locals.errors && errors.Descripcion) { %>
-                        <p class="error"><%= errors.Descripcion.msg%></p>
-                      <% } %>
-                    <button type="text" class="submit">Actualizar</button>
-          
-          
-                  </form>
-			</h2>
+                      <% if (locals.errors && errors.nombre) { %>
+                        <p class="error">
+                          <%= errors.nombre.msg%>
+                        </p>
+                        <% } %>
+                          <div class="input-container ic2">
+                            <p>Imagen<input id="title" class="input" type="text" name="imagen" placeholder="imagen"
+                                value="<%= productos.imagenProducto %>" /></p>
+                          </div>
+                          <% if (locals.errors && errors.imagen) { %>
+                            <p class="error">
+                              <%= errors.imagen.msg%>
+                            </p>
+                            <% } %>
+                              <p>Descripcion <input type="text" name="Descripcion"
+                                  value="<%= productos.descripcionProducto %> " placeholder="Descripcion"></p>
+                              <% if (locals.errors && errors.Descripcion) { %>
+                                <p class="error">
+                                  <%= errors.Descripcion.msg%>
+                                </p>
+                                <% } %>
+                                  <button type="text" class="submit">Actualizar</button>
 
-        
 
-</body>
+                    </form>
+                  </h2>
+
+
+
+            </body>
+
 </html>

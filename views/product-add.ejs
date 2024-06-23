@@ -3,45 +3,55 @@
 <!-- Include Head -->
 
 <%- include('./partials/head.ejs' ) %>
-<body>
-	<!-- Header -->
-	<% if (locals.user != undefined) { %>
-		<%- include('./partials/headerLogueado.ejs' ) %>
-	 <% } else { %>
-		<%- include('./partials/headerDeslogueado.ejs' ) %>
-	<% } %>
-	<!-- /Header -->
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Agregar productos</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12">
-				<form action="/product/Add/" method="post">
-					<p>Imagen: <input type="text" name="Imagen" value="" placeholder="Imagen" ></p>
-					<% if (locals.errors && errors.Imagen) { %>
-						<p class="error"><%= errors.Imagen.msg%></p>
-					<% } %>
-					<p>Nombre: <input type="text" name="Nombre" value="" placeholder="Nombre" ></p>
-					<% if (locals.errors && errors.Nombre) { %>
-						<p class="error"><%= errors.Nombre.msg%></p>
-					<% } %>
-					<p>Descripcion: <input type="text" name="Descripcion" value="" placeholder="Descripcion" ></p>
-					<% if (locals.errors && errors.Descripcion) { %>
-						<p class="error"><%= errors.Descripcion.msg%></p>
-					<% } %>
-					<button type="submit" value=" ">AGREGAR</button>
+	<body>
+		<!-- Header -->
+		<% if (locals.user !=undefined) { %>
+			<%- include('./partials/headerLogueado.ejs' ) %>
+				<% } else { %>
+					<%- include('./partials/headerDeslogueado.ejs' ) %>
+						<% } %>
+							<!-- /Header -->
 
-				</form>
-			</h2>
+							<!-- Novedades -->
+							<div class="container products-wrapper">
+								<div class="row">
+									<div class="col-12">
+										<h2 class="products-title">Agregar productos</h2>
+									</div>
+									<!-- Show the "ultimos" products -->
+									<h2 class="col-12">
+										<form action="/product/Add/" method="post">
+											<p>Imagen: <input type="text" name="Imagen" value="" placeholder="Imagen">
+											</p>
+											<% if (locals.errors && errors.Imagen) { %>
+												<p class="error">
+													<%= errors.Imagen.msg%>
+												</p>
+												<% } %>
+													<p>Nombre: <input type="text" name="Nombre" value=""
+															placeholder="Nombre"></p>
+													<% if (locals.errors && errors.Nombre) { %>
+														<p class="error">
+															<%= errors.Nombre.msg%>
+														</p>
+														<% } %>
+															<p>Descripcion: <input type="text" name="Descripcion"
+																	value="" placeholder="Descripcion"></p>
+															<% if (locals.errors && errors.Descripcion) { %>
+																<p class="error">
+																	<%= errors.Descripcion.msg%>
+																</p>
+																<% } %>
+																	<button type="submit" value=" ">AGREGAR</button>
+
+										</form>
+									</h2>
 
 
-			<!-- footer -->
-			<%- include('./partials/footer.ejs' ) %>
-			<!-- /footer -->
-</body>
+									<!-- footer -->
+									<%- include('./partials/footer.ejs' ) %>
+										<!-- /footer -->
+	</body>
 
 </html>
