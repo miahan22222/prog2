@@ -134,8 +134,6 @@ loginUser: (req, res)=> {
   let errors = validationResult (req)
  
  
-
- 
  if (errors.isEmpty()) {
      let forms = req.body;
 

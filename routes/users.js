@@ -99,7 +99,7 @@ router.post('/register', validations, usersController.storeRegister);
 router.get("/login", usersController.vistaDeLogin)
 router.post("/login", validationsLogin, usersController.loginUser)
 router.get("/id/:idUsuario", usersController.vistadeProfile);
-router.get("/profile-edit", usersController.vistadeEditProfile);
+router.get("/profile-edit/", usersController.vistadeEditProfile);
 router.post("/updatePerfil/", validationsEdit, usersController.updatePerfil);
 router.post('/logout', usersController.logout);
 

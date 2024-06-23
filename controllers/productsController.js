@@ -13,8 +13,8 @@ const productsController = {
                     include: ["usuarios"],
                    
                 }
-            ],
-           order: [[{ model: db.Comentario, as: 'comentario' }, 'createdAt', 'DESC']] 
+            ]//,
+        
         }
         db.Producto.findByPk(idProducto, filtrado)
             .then(function (result) {
@@ -87,7 +87,7 @@ const productsController = {
             let comment = {
                 textoComentario: forms.Add,
                 idUsuario: req.session.user.id,
-                idProducto: req.params.idProducto
+                idProducto: req.params.idProducto,
             }
 
             db.Comentario.create(comment)
