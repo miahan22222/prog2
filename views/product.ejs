@@ -2,86 +2,78 @@
 <html lang="es">
 <!-- Include Head -->
 
-<!-- Include Head -->
-
 <%- include('./partials/head.ejs' ) %>
-
 <body>
 	<!-- Header -->
-	<%- include('./partials/headerLogueado.ejs' ) %>
+	<% if (locals.user != undefined) { %>
+		<%- include('./partials/headerLogueado.ejs' ) %>
+	 <% } else { %>
+		<%- include('./partials/headerDeslogueado.ejs' ) %>
+	<% } %>
 	<!-- Header -->
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title">
-				<%= productos[0].nombreProducto %>
+				<%= productos.nombreProducto %>
 			</h2>
 			<p class="product-detail-description">
-				<a href="/product/Add/">Editar</a>
+				<a href="/product/editProducto/<%=productos.id%>">Editar</a>
+				<form action="/product/deleteProducto" method="post">
+                    <input type="hidden" name="id" value="<%= productos.id %>">
+					<input type="hidden" name="idUsuario" value="<%= productos.idUsuario %>">
+                    <button class="btn-special btn-red" type="submit">Eliminar</button>
+                  </form>
+			
 			</p>
 		</div>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/auto1.png" alt="" class="product-detail-img">
+					<img src="/images/products/<%=productos.imagenProducto%>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<%= productos[0].descripcion %>
+						<%= productos.descripcionProducto %>
+					</p>
+					<p class="product-detail-description"> <a href="/users/id/<%=productos.idUsuario%>">
+						Usuario: <%= productos.usuario.usuario %>
+					</a>  
 					</p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<article>
 
-
-							<img src=<%= productos[0].comentarios[0].fotoPerfil %> alt="">
+						<article >
+							<% for (let i=0; i < productos.comentario.length; i++) {%>
+							<img src=<%=productos.comentario[i].usuarios.fotoPerfil%> alt="">
 							<div class="data">
 								<p class="user">
-									<strong> <a href="/users/profile/">
-											<%= productos[0].comentarios[0].nombreUsuario %>
-										</a> </strong>
-
-
+									<strong> <a href="/users/id/<%=productos.comentario[i].usuarios.id%>">
+										<%= productos.comentario[i].usuarios.usuario %> 
+										
+									</a> </strong> 
+								</p> 
 								<p>
-									<%= productos[0].comentarios[0].texto %>
+									<%= productos.comentario[i].textoComentario %>
 								</p>
+						
 							</div>
-						</article>
-						<article>
-							<img src=<%= productos[0].comentarios[0].fotoPerfil %> alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/users/profile/">
-											<%= productos[0].comentarios[0].nombreUsuario %>
-										</a> </strong>
-
-
-								<p>
-									<%= productos[0].comentarios[1].texto %>
-								</p>
-							</div>
-						</article>
-						<article>
-							<img src=<%= productos[0].comentarios[0].fotoPerfil %> alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/users/profile/">
-											<%= productos[0].comentarios[0].nombreUsuario %>
-										</a> </strong>
-
-
-								<p>
-									<%= productos[0].comentarios[2].texto %>
-								</p>
-
-							</div>
+							<%} %>
 						</article>
 
-
+											
 					</section>
-					<form class="form" action="/product/" method="get">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+					<% if (locals.user) { %>
+					<form class="form" action="/product/id/<%= productos.id %>" method="post">
+						<input class="form-input" type="text" name="Add" value="" placeholder="Agregar comentario">
+						<%if (locals.errors && errors.Add) { %>
+						<p class="error"><%= errors.Add.msg%></p>
+					   <% } %>
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+						
 					</form>
+					<% } else { %>
+						<p >Debes estar logueado para comentar</p>
+					  <% } %>
 					<hr>
 				</div>
 			</div>
