@@ -415,6 +415,7 @@ hr {
   padding-bottom: 7.5px;
   border-bottom: 1px solid #dcdcdc;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 .comments img{
