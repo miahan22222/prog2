@@ -45,21 +45,21 @@ module.exports = function(sequelize, dataTypes) {
 
     let config = {
         tableName: "usuarios",
-        timestamps: false,
+        timestamps: true,
         underscored: false,
     };
 
     /* definir un modelo */
     let Usuario = sequelize.define( alias, cols, config);
 
-    Usuario.associate = function(models){//chequear todo
+    Usuario.associate = function(models){
         Usuario.hasMany(models.Producto,{
-            as: "productos", //chequear
+            as: "productos", 
             foreignKey: "idUsuario"
         });
 
         Usuario.hasMany(models.Comentario,{
-            as: "comentario", //chequear
+            as: "comentario", 
             foreignKey: "idUsuario",
         })
         

@@ -11,11 +11,14 @@ const productsController = {
                 {
                     association: "comentario",
                     include: ["usuarios"],
-
-                }
-            ]//,
-
+                },  
+            ],
+            order: [
+                ['comentario', 'createdAt', 'DESC']
+            ]
         }
+    
+        
         db.Producto.findByPk(idProducto, filtrado)
             .then(function (result) {
                 //return res.send(result)
@@ -77,10 +80,9 @@ const productsController = {
         }
 
         let errors = validationResult(req)
-        //console.log("errors : " , JSON.stringify(errors,null,4));
+  
 
-        if (errors.isEmpty()) {//falta hacer que se relacione con el usuario que lo crea
-
+        if (errors.isEmpty()) {
 
             let forms = req.body;
 
